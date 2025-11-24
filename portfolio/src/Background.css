@@ -1,0 +1,26 @@
+.background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: #08080f; /* dark base */
+  overflow: hidden;
+  z-index: -1;
+  font-family: monospace;
+}
+
+.binary {
+  position: absolute;
+  top: -100px;
+  font-size: 14px;
+  opacity: 0.6;
+  animation: fall linear infinite;
+  text-shadow: 0 0 5px #0ff, 0 0 10px #f0f, 0 0 15px #0ff, 0 0 20px #f0f;
+}
+
+@keyframes fall {
+  0% { transform: translateY(0) translateX(0); opacity: 0.4; }
+  50% { transform: translateY(50vh) translateX(15px); opacity: 1; }
+  100% { transform: translateY(100vh) translateX(-10px); opacity: 0.4; }
+}
