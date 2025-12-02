@@ -7,9 +7,9 @@ export default function Background() {
   useEffect(() => {
     const temp = [];
     const techChars = ["0", "1", "{ }", "< />", "JS", "HTML", "CSS", "DB", "Node", "React"];
-    const colors = ["#ffffff", "#00bfff", "#9370db"];
+    const colors = ["#ffffff", "#aaff4a", "#f0f", "#0ff"];
 
-    for (let i = 0; i < 80; i++) {
+    for (let i = 0; i < 300; i++) {
       temp.push({
         id: i,
         left: Math.random() * window.innerWidth,
