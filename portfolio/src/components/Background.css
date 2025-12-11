@@ -1,0 +1,38 @@
+/* Full-screen animated background */
+.background {
+  position: fixed;
+  inset: 0;
+  background-color: #000;
+  overflow: hidden;
+  z-index: -1;
+}
+
+/* Each symbol */
+.binary {
+  position: absolute;
+  top: -200px; /* start above screen */
+  opacity: 0.5;
+  font-family: monospace;
+  pointer-events: none;
+  animation-name: fall;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+/* Falling animation */
+@keyframes fall {
+  0% {
+    transform: translateY(0);
+    opacity: 0;
+  }
+  15% {
+    opacity: 0.5;
+  }
+  85% {
+    opacity: 0.5;
+  }
+  100% {
+    transform: translateY(120vh);
+    opacity: 0;
+  }
+}

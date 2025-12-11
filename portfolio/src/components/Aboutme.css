@@ -1,0 +1,88 @@
+.about {
+  position: relative;
+  min-height: 60vh;
+  padding: 5rem 1.5rem;
+  background: rgba(0, 0, 0, 0.2);
+}
+
+.about-container {
+  max-width: 80rem;
+  margin: 0 auto;
+}
+
+.about h2 {
+  font-size: 2.25rem;
+  font-weight: bold;
+  color: white;
+  font-family: "monospace", monospace;
+  margin-bottom: 3rem;
+  text-align: center;
+}
+
+@media (min-width: 768px) {
+  .about h2 {
+    font-size: 3rem;
+  }
+}
+
+.about-content {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+
+.about-content p {
+  font-size: 1.125rem;
+  color: #d1d5db;
+  line-height: 1.8;
+  max-width: 56rem;
+  margin: 0 auto;
+}
+
+.skills-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+}
+
+@media (min-width: 640px) {
+  .skills-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.skill-category {
+  padding: 1.5rem;
+  border: 1px solid rgba(170, 255, 74, 0.2);
+  border-radius: 0.5rem;
+  background: rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease;
+}
+
+.skill-category:hover {
+  border-color: rgba(170, 255, 74, 0.5);
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.skill-category h4 {
+  font-size: 1.125rem;
+  font-weight: bold;
+  color: #aaff4a;
+  font-family: "monospace", monospace;
+  margin-bottom: 1rem;
+}
+
+.skill-category ul {
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.skill-category li {
+  color: #d1d5db;
+  font-size: 0.875rem;
+  position: relative;
+}
+
+

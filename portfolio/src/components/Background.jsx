@@ -1,4 +1,4 @@
-import "../background.css";
+import "./Background.css";
 import { useEffect, useState } from "react";
 
 export default function Background() {
@@ -7,7 +7,7 @@ export default function Background() {
   useEffect(() => {
     const temp = [];
     const techChars = ["0", "1", "{ }", "< />", "JS", "HTML", "CSS", "DB", "Node", "React"];
-    const colors = ["#ffffff", "#aaff4a", "#f0f", "#0ff"];
+    const colors = ["#aaff4a", "#ffea4a", "#88ffff", "#ff6b9d"];
 
     for (let i = 0; i < 300; i++) {
       temp.push({

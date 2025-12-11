@@ -1,14 +1,20 @@
 import Background from "./components/Background";
 import Hero from "./components/Hero";
-import NavBar from "./components/NavBar";
+import Navbar from "./components/NavBar";
+import Projects from "./components/Projects";
+import Aboutme from "./components/Aboutme";
+import Contact from "./components/Contact";
 
 function App() {
   return (
-    <div style={{ position: "relative", minHeight: "100vh" }}>
-      <Background />
-      <NavBar/>
-      <Hero />  
-    </div>
+  <>     
+   <Background />
+    <Hero />
+    <Navbar/>  
+    <Projects/>
+    <Aboutme/>
+    <Contact/>
+    </>
   );
 }
 
