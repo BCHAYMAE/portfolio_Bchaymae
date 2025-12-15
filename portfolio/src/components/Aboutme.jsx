@@ -7,11 +7,12 @@ export default function Aboutme() {
         <h2>About Me</h2>
         <div className="about-content">
           <p>
-            I’m Bellahcene Chaymae, a Full-Stack Developer who thrives on creativity and problem-solving.
-            I enjoy bringing ideas to life through code, whether it’s crafting sleek front-end interfaces
-            or building powerful back-end systems. Curious, collaborative, and always eager to learn, 
-            I aim to make every project meaningful.
+            Hi! I’m Chaymae, a full-stack developer who loves creating web apps <br/>
+            that are both functional and beautiful. I work with React, Laravel, Node.js, and databases <br/>
+            like MySQL & MongoDB, and I enjoy turning ideas into real projects. <br/>
+            I’m always learning new tools, exploring creative solutions, and building things that make people’s lives easier or at least more fun!
           </p>
+          <a href="/CV-BELLAHCENE-Chaymae.pdf" download className="resume-button">Download Resume</a>
         </div>
 
         <section id="skills" className="skills-section">

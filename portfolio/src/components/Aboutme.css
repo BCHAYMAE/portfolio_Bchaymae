@@ -15,8 +15,8 @@
   font-weight: bold;
   color: white;
   font-family: "monospace", monospace;
-  margin-bottom: 3rem;
-  text-align: center;
+  margin-bottom: 1rem;
+  margin-left: 4rem;
 }
 
 @media (min-width: 768px) {
@@ -27,17 +27,31 @@
 
 .about-content {
   display: flex;
-  flex-direction: column;
-  gap: 3rem;
+  flex-direction: row;
+  align-items: center;
+  gap: 1rem;
 }
 
 .about-content p {
   font-size: 1.125rem;
   color: #d1d5db;
-  line-height: 1.8;
+  line-height: 1.5;
   max-width: 56rem;
-  margin: 0 auto;
+  margin-left: 4rem;
 }
+
+.resume-button {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  color: #b6ff00;
+  text-decoration: none;
+  font-family: Arial, Helvetica, sans-serif;
+  border-radius: 8px;
+  font-weight: bold;
+  border: 1px solid #b6ff00;
+}
+
+
 
 .skills-grid {
   display: grid;

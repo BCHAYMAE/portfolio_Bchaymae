@@ -1,62 +1,54 @@
 .contact {
-  position: relative;
-  min-height: 50vh;
-  padding: 5rem 1.5rem;
+  min-height: 100vh;
   display: flex;
-  align-items: center;
   justify-content: center;
-  background: rgba(0, 0, 0, 0.3);
+  align-items: center;
 }
 
-.contact-container {
-  max-width: 56rem;
+.contact-card {
+  border: 1px solid #b6ff00;
+  border-radius: 16px;
+  padding: 3rem 2.5rem;
   text-align: center;
+  max-width: 600px;
+  width: 90%;
+  box-shadow: 0 0 40px rgba(182, 255, 0, 0.15);
 }
 
-.contact-container h2 {
-  font-size: 2.25rem;
-  font-weight: bold;
+
+.contact-card h2 {
   color: white;
-  font-family: "Courier New", monospace;
+  font-size: 2rem;
   margin-bottom: 1rem;
 }
 
-@media (min-width: 768px) {
-  .contact-container h2 {
-    font-size: 3rem;
-  }
+.contact-card p {
+  color: #9ca3af;
+  margin-bottom: 2.5rem;
+  line-height: 1.6;
 }
 
-.contact-subtitle {
-  font-size: 1.125rem;
-  color: #d1d5db;
-  margin-bottom: 3rem;
-}
-
-.contact-links {
+.socials {
   display: flex;
-  flex-wrap: wrap;
-  gap: 1.5rem;
   justify-content: center;
+  gap: 1.2rem;
 }
 
-.contact-link {
-  padding: 0.75rem 1.5rem;
-  border: 2px solid #aaff4a;
-  color: #aaff4a;
+.socials a {
+  width: 44px;
+  height: 44px;
+  border: 1px solid #b6ff00;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #b6ff00;
+  font-size: 1.1rem;
   text-decoration: none;
-  border-radius: 0.5rem;
-  font-weight: bold;
-  font-family: "Courier New", monospace;
-  transition: all 0.3s ease;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  font-size: 0.875rem;
+  transition: background 0.2s ease, color 0.2s ease;
 }
 
-.contact-link:hover {
-  background: #aaff4a;
+.socials a:hover {
+  background: #b6ff00;
   color: black;
-  transform: translateY(-2px);
-  box-shadow: 0 10px 20px rgba(170, 255, 74, 0.2);
 }

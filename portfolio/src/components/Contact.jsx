@@ -1,32 +1,23 @@
-import "./Contact.css"
+import "./Contact.css";
+import { FaGithub, FaLinkedin, FaEnvelope } from "react-icons/fa";
+
 
 export default function Contact() {
   return (
-    <section id="contact" className="contact">
-      <div className="contact-container">
-        <h2>Get In Touch</h2>
-        <p className="contact-subtitle">Let's create something amazing together</p>
+    <section className="contact">
+      <div className="contact-card">
+        <h2>Let’s Build Something Together!</h2>
+        <p>
+          I’m always happy to chat about projects, ideas, or even just to say hello
+        </p>
+        <div className="socials">
+          <a href="https://github.com/BCHAYMAE" target="_blank" rel="noreferrer"><FaGithub size={24} /> </a>
+          <a href="https://www.linkedin.com/in/chaymae-bellahcene-93a780336/" target="_blank" rel="noreferrer"><FaLinkedin size={24} /> </a>
+           <a href="#" onClick={(e) => { e.preventDefault(); window.open("https://mail.google.com/mail/?view=cm&to=bellahcene.chaymae@gmail.com","_blank");
+    }} title="Email" > <FaEnvelope size={24} /></a>
 
-        <div className="contact-links">
-          <a
-            href="mailto:bellahcene.chaymae@gmail.com"
-            className="contact-link"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Email
-          </a>
-          <a href="https://linkedin.com" className="contact-link" target="_blank" rel="noopener noreferrer">
-            LinkedIn
-          </a>
-          <a href="https://github.com" className="contact-link" target="_blank" rel="noopener noreferrer">
-            GitHub
-          </a>
-          <a href="https://twitter.com" className="contact-link" target="_blank" rel="noopener noreferrer">
-            Twitter
-          </a>
         </div>
       </div>
     </section>
-  )
+  );
 }
