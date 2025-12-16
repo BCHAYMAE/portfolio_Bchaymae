@@ -1,5 +1,4 @@
 import "./Projects.css"
-import pro1 from "../assets/pro1.png"
 
 export default function Projects() {
   const projects = [
@@ -16,7 +15,7 @@ export default function Projects() {
         "CORS",
         "Docker",
       ],
-      image: pro1, 
+      image: "/pro1.png", 
       repo: "https://github.com/BCHAYMAE/deployment_app",
     },
   ]
