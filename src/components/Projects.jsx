@@ -25,7 +25,7 @@ export default function Projects() {
       <div className="projects-container">
         <div className="projects-header">
           <h2>Featured Projects</h2>
-          <p>A selection of work I'm proud of</p>
+          <p>Click the project title to view the source code on GitHub</p>
         </div>
 
         <div className="projects-grid">
