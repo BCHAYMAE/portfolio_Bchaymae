@@ -1,31 +1,51 @@
 import "./Background.css";
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 
 export default function Background() {
+  const techChars = useMemo(
+    () => ["0", "1", "Docker", "Nginx", "JS", "CI/CD", "CSS", "DB", "Node", "React"],
+    []
+  );
+
+  const colors = useMemo(
+    () => ["#aaff4a", "#ffea4a", "#88ffff", "#ff6b9d"],
+    []
+  );
+
   const [symbols, setSymbols] = useState([]);
 
   useEffect(() => {
-    const temp = [];
-    const techChars = ["0", "1", "{ }", "< />", "JS", "HTML", "CSS", "DB", "Node", "React"];
-    const colors = ["#aaff4a", "#ffea4a", "#88ffff", "#ff6b9d"];
+    const generate = () => {
+      const width = window.innerWidth;
 
-    for (let i = 0; i < 300; i++) {
-      temp.push({
-        id: i,
-        left: Math.random() * window.innerWidth,
-        char: techChars[Math.floor(Math.random() * techChars.length)],
-        size: Math.random() * 4 + 12,
-        delay: Math.random() * 10,
-        speed: Math.random() * 8 + 5,
-        color: colors[Math.floor(Math.random() * colors.length)]
-      });
-    }
-    setSymbols(temp);
-  }, []);
+      const count =
+        width < 640 ? 80 : width < 1024 ? 120 : 160; 
+
+      const temp = [];
+      for (let i = 0; i < count; i++) {
+        const color = colors[Math.floor(Math.random() * colors.length)];
+        temp.push({
+          id: i,
+          left: Math.random() * width,
+          char: techChars[Math.floor(Math.random() * techChars.length)],
+          size: Math.random() * 6 + 10, 
+          delay: Math.random() * 8,
+          speed: Math.random() * 10 + 10, 
+          drift: (Math.random() * 60 - 30).toFixed(0), 
+          color
+        });
+      }
+      setSymbols(temp);
+    };
+
+    generate();
+    window.addEventListener("resize", generate);
+    return () => window.removeEventListener("resize", generate);
+  }, [colors, techChars]);
 
   return (
-    <div className="background">
-      {symbols.map(s => (
+    <div className="background" aria-hidden="true">
+      {symbols.map((s) => (
         <div
           key={s.id}
           className="binary"
@@ -35,12 +55,17 @@ export default function Background() {
             animationDuration: `${s.speed}s`,
             animationDelay: `${s.delay}s`,
             color: s.color,
-            textShadow: `0 0 5px ${s.color}, 0 0 10px ${s.color}, 0 0 15px ${s.color}`
+            "--drift": `${s.drift}px`,
+            textShadow: `0 0 6px ${s.color}`
           }}
         >
           {s.char}
         </div>
       ))}
+
+      {/* overlays */}
+      <div className="bgOverlay" />
+      <div className="vignette" />
     </div>
   );
 }

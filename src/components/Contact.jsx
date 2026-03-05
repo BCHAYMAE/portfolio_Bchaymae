@@ -13,7 +13,7 @@ export default function Contact() {
         <div className="socials">
           <a href="https://github.com/BCHAYMAE" target="_blank" rel="noreferrer"><FaGithub size={24} /> </a>
           <a href="https://www.linkedin.com/in/chaymae-bellahcene-93a780336/" target="_blank" rel="noreferrer"><FaLinkedin size={24} /> </a>
-           <a href="#" onClick={(e) => { e.preventDefault(); window.open("https://mail.google.com/mail/?view=cm&to=bellahcene.chaymae@gmail.com","_blank");
+           <a href="bellahcene.chaymae@gmail.com" onClick={(e) => { e.preventDefault(); window.open("https://mail.google.com/mail/?view=cm&to=bellahcene.chaymae@gmail.com","_blank");
     }} title="Email" > <FaEnvelope size={24} /></a>
 
         </div>

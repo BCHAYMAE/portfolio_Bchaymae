@@ -1,11 +1,15 @@
-import "./Projects.css"
+import "./Projects.css";
 
 export default function Projects() {
   const projects = [
     {
       title: "GitRepo AutoDeploy App",
-      description:
-        "This application is a full-stack deployment tool that automates cloning Git repositories, auto-detecting frontend/backend/database technologies, generating Dockerfiles, and deploying containerized apps via Docker Compose with real-time WebSocket updates.",
+      description: `A full-stack deployment tool that automatically clones GitHub repositories
+and generates Dockerfiles.
+
+• Detects project type automatically
+• Generates Docker configuration
+• Deploys with Nginx reverse proxy`,
       tags: [
         "Node.js",
         "Express.js",
@@ -14,34 +18,76 @@ export default function Projects() {
         "simple-git",
         "CORS",
         "Docker",
+        "Nginx",
       ],
-      image: "/pro1.png", 
+      image: "/pro1.png",
       repo: "https://github.com/BCHAYMAE/deployment_app",
+      demo: null,
     },
-  ]
+    {
+      title: "AI Adventures",
+      description: "It's a browser-based educational game inspired by classic maze games like Pac-Man, where players explore artificial intelligence concepts through interactive challenges. Children collect data, avoid enemies, and complete sorting tasks that introduce ideas such as supervised, unsupervised, and reinforcement learning. Designed with colorful visuals and simple controls, the game transforms complex AI concepts into fun, hands-on learning experiences",
+      tags: [
+        "Html",
+        "Javascript",
+        "Css",
+      ],
+      image: "/aiGame.PNG",
+      repo: "https://github.com/BCHAYMAE/ai_learning",
+      demo: "https://ai-adventures.netlify.app/",
+    },
+  ];
 
   return (
     <section id="projects" className="projects">
       <div className="projects-container">
-        <div className="projects-header">
+        <header className="projects-header">
           <h2>Featured Projects</h2>
-          <p>Click the project title to view the source code on GitHub</p>
-        </div>
+          <p>Selected work — source code available on GitHub.</p>
+        </header>
 
         <div className="projects-grid">
           {projects.map((project, idx) => (
-            <div key={idx} className="project-card">
+            <article key={idx} className="project-card">
+              
               <div className="project-image">
-                <img src={project.image} alt={project.title} />
+                <img src={project.image} alt={project.title} loading="lazy" />
               </div>
 
               <div className="project-content">
-                <h3>
-                  <a href={project.repo} target="_blank"rel="noopener noreferrer" className="project-link">
-                  {project.title}
-                  </a></h3>
-                <p>{project.description}</p>
 
+                {/* Title + Buttons */}
+                <div className="project-top">
+                  <h3 className="project-title">{project.title}</h3>
+
+                  <div className="project-actions">
+                    <a
+                      className="github-btn"
+                      href={project.repo}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label={`Open ${project.title} on GitHub`}
+                    >
+                      GitHub ↗
+                    </a>
+
+                    {project.demo && (
+                      <a
+                        className="demo-btn"
+                        href={project.demo}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        Live Demo ↗
+                      </a>
+                    )}
+                  </div>
+                </div>
+
+                {/* Description */}
+                <p className="project-description">{project.description}</p>
+
+                {/* Tags */}
                 <div className="project-tags">
                   {project.tags.map((tag, tagIdx) => (
                     <span key={tagIdx} className="tag">
@@ -49,12 +95,12 @@ export default function Projects() {
                     </span>
                   ))}
                 </div>
+
               </div>
-            </div>
+            </article>
           ))}
         </div>
       </div>
     </section>
-  )
+  );
 }
-

@@ -1,38 +1,48 @@
-import legoVideo from "../assets/lego.mp4"; 
+import devIllustration from "../assets/pic.png";
 import "./Hero.css";
 
 export default function Hero() {
   return (
     <section className="hero-section">
+      <div className="hero-container">
 
-      <video src={legoVideo} autoPlay loop muted className="hero-video" />
+        <div className="hero-text">
+          <div className="hero-badge">
+            {"< Full-Stack Developer />"}
+          </div>
 
-      <div className="hero-content">
-        <div className="hero-badge">
-          {"< Full-Stack Developer />"}
+          <h1 className="hero-title">
+            <span className="hero-title-highlight"> CHAYMAE</span> <br/>
+            BELLAHCENE
+          </h1>
+
+          <p className="hero-description">
+            Full-Stack Developer who enjoys building web applications with
+            React, Node.js and Laravel.
+            <br />
+            Currently learning DevOps practices and experimenting with Docker,
+            Nginx and deployment automation.
+          </p>
+
+          <div className="hero-buttons">
+            <button
+              className="hero-btn primary-btn"
+              onClick={() =>
+                window.open(
+                  "https://mail.google.com/mail/?view=cm&to=bellahcene.chaymae@gmail.com",
+                  "_blank"
+                )
+              }
+            >
+              Let's Work Together
+            </button>
+          </div>
         </div>
 
-        <h1 className="hero-title">
-          BELLAHCENE
-          <span className="hero-title-highlight">CHAYMAE</span>
-        </h1>
-
-        <p className="hero-description">
-          A Full-Stack Developer who loves turning concepts into real experiences.
-          Curious, creative, and committed, I strive to make every project functional, clear, and enjoyable.
-        </p>
-
-        <div className="hero-buttons">
-          <button
-            className="hero-btn primary-btn" onClick={() => window.open(
-      "https://mail.google.com/mail/?view=cm&to=bellahcene.chaymae@gmail.com","_blank")}>
-          Let's Work Together
-          </button>
+        <div className="hero-image">
+          <img src={devIllustration} alt="Developer illustration" />
         </div>
 
-        <div className="hero-scroll">
-          <div>↓ Scroll to explore</div>
-        </div>
       </div>
     </section>
   );

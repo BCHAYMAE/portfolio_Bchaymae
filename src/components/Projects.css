@@ -10,9 +10,8 @@
 }
 
 .projects-header {
-  margin-bottom: 4rem;
-  display: flex;
-  flex-direction: column;
+  margin-bottom: 3rem;
+  max-width: 900px;
 }
 
 .projects-header h2 {
@@ -20,8 +19,7 @@
   font-weight: bold;
   color: white;
   font-family: "monospace", monospace;
-  margin-bottom: 1rem;
-  margin-left: 4rem;
+  margin-bottom: 0.75rem;
 }
 
 @media (min-width: 768px) {
@@ -33,8 +31,7 @@
 .projects-header p {
   color: #9ca3af;
   font-size: 1.125rem;
-  margin-bottom: 1rem;
-  margin-left: 4rem;
+  margin: 0;
 }
 
 .projects-grid {
@@ -52,66 +49,78 @@
 .project-card {
   position: relative;
   overflow: hidden;
-  border-radius: 0.5rem;
-  border: 1px solid rgba(170, 255, 74, 0.2);
+  border-radius: 0.75rem;
+  border: 1px solid rgba(170, 255, 74, 0.22);
   background: rgba(0, 0, 0, 0.4);
   backdrop-filter: blur(10px);
-  transition: all 0.3s ease;
+  transition: transform 0.25s ease, border-color 0.25s ease, background 0.25s ease,
+    box-shadow 0.25s ease;
 }
 
 .project-card:hover {
-  border-color: rgba(170, 255, 74, 0.6);
-  background: rgba(0, 0, 0, 0.6);
-  transform: translateY(-4px);
-  box-shadow: 0 20px 40px rgba(170, 255, 74, 0.1);
+  border-color: rgba(170, 255, 74, 0.7);
+  background: rgba(0, 0, 0, 0.65);
+  transform: translateY(-6px);
+  box-shadow: 0 0 20px rgba(170, 255, 74, 0.15), 0 0 40px rgba(170, 255, 74, 0.05);
 }
 
 .project-image {
   position: relative;
   height: 15rem;
   overflow: hidden;
-  background: linear-gradient(to bottom right, rgba(170, 255, 74, 0.1), black);
+  background: linear-gradient(to bottom right, rgba(170, 255, 74, 0.12), black);
 }
 
 .project-image img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  transition: transform 0.4s ease;
 }
 
+.project-card:hover .project-image img {
+  transform: scale(1.05);
+}
 
 .project-content {
   padding: 1.5rem;
   display: flex;
   flex-direction: column;
-  gap: 0.75rem;
+  gap: 0.9rem;
 }
 
-.project-content h3 {
+.project-title {
   font-size: 1.25rem;
   font-weight: bold;
   color: white;
   font-family: "Courier New", monospace;
-  transition: color 0.3s ease;
+  transition: color 0.25s ease;
+  margin: 0;
 }
 
-.project-card:hover .project-content h3 {
+.project-card:hover .project-title {
   color: #aaff4a;
 }
 
-.project-content p {
+.project-description {
   color: #9ca3af;
-  font-size: 0.875rem;
-  line-height: 1.6;
+  font-size: 0.9rem;
+  line-height: 1.7;
+  margin: 0;
+  white-space: pre-line; /* keeps the bullets formatting */
 }
 
 .project-tags {
   display: flex;
   flex-wrap: wrap;
   gap: 0.5rem;
-  padding-top: 1rem;
+  padding-top: 0.25rem;
 }
 
+.project-actions {
+  display: flex;
+  gap: 0.5rem;
+}
 .tag {
   padding: 0.25rem 0.75rem;
   font-size: 0.75rem;
@@ -119,7 +128,7 @@
   background: rgba(170, 255, 74, 0.1);
   border: 1px solid rgba(170, 255, 74, 0.3);
   color: #aaff4a;
-  border-radius: 0.25rem;
+  border-radius: 0.35rem;
   transition: all 0.2s ease;
 }
 
@@ -128,13 +137,125 @@
   border-color: rgba(170, 255, 74, 0.5);
 }
 
-.project-link {
-  color: white;
-  text-decoration: none;
-  transition: color 0.3s ease;
+.project-links {
+  display: flex;
+  gap: 0.75rem;
+  margin-top: 0.25rem;
+  flex-wrap: wrap;
 }
 
-.project-link:hover {
+.project-btn {
+  font-size: 0.85rem;
+  font-family: "Courier New", monospace;
+  padding: 0.45rem 0.9rem;
+  border-radius: 0.4rem;
+  text-decoration: none;
   color: #aaff4a;
-  text-decoration: underline;
+  border: 1px solid rgba(170, 255, 74, 0.4);
+  background: rgba(170, 255, 74, 0.08);
+  transition: all 0.2s ease;
+}
+
+.project-btn:hover {
+  background: #aaff4a;
+  color: #000;
+  box-shadow: 0 0 10px rgba(170, 255, 74, 0.5), 0 0 20px rgba(170, 255, 74, 0.25);
+  transform: translateY(-2px);
+}
+
+.project-btn.secondary {
+  color: white;
+  border-color: rgba(255, 255, 255, 0.25);
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.project-btn.secondary:hover {
+  background: white;
+  color: black;
+  box-shadow: none;
+}
+
+.project-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.project-title {
+  margin: 0;
+  font-size: 1.25rem;
+  font-weight: bold;
+  color: white;
+  font-family: "Courier New", monospace;
+  transition: color 0.25s ease;
+}
+
+.project-card:hover .project-title {
+  color: #aaff4a;
+}
+
+/* GitHub button */
+.github-btn {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.4rem 0.8rem;
+
+  font-size: 0.8rem;
+  font-family: "Courier New", monospace;
+
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,0.2);
+
+  background: rgba(255,255,255,0.05);
+  color: white;
+
+  text-decoration: none;
+
+  transition: all 0.2s ease;
+}
+
+.github-btn:hover {
+  color: #aaff4a;
+  border-color: rgba(170,255,74,0.5);
+  background: rgba(170,255,74,0.1);
+}
+
+.github-btn:hover {
+  transform: translateY(-2px);
+  border-color: rgba(170, 255, 74, 0.55);
+  background: rgba(170, 255, 74, 0.14);
+  color: #aaff4a;
+}
+
+.demo-btn {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.4rem 0.8rem;
+
+  font-size: 0.8rem;
+  font-family: "Courier New", monospace;
+
+  border-radius: 999px;
+  border: 1px solid rgba(170,255,74,0.5);
+
+  background: rgba(170,255,74,0.08);
+  color: #aaff4a;
+
+  text-decoration: none;
+
+  transition: all 0.2s ease;
+}
+
+.demo-btn:hover {
+  background: #aaff4a;
+  color: black;
+}
+
+/* On small screens, put button under title */
+@media (max-width: 520px) {
+  .project-top {
+    flex-direction: column;
+    align-items: flex-start;
+  }
 }
