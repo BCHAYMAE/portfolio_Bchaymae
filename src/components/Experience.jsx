@@ -18,7 +18,7 @@ export default function Experience() {
       accent: "past",
       icon: "/novelis-square-logo.png", 
       description:
-        "Created hands-on projects to teach children tech concepts like AI, algorithms, and web development, making complex topics accessible and engaging.",
+        "  I developed a Web-Based Auto-Deploy System to automate and streamline deployments, improving efficiency and reliability. Gained hands-on experience in web development and DevOps .",
     },
     {
       company: "Maison des Sciences",
