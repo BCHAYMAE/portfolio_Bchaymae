@@ -1,5 +1,6 @@
 import "./Aboutme.css";
 import { FaReact, FaNodeJs, FaDocker, FaGitAlt } from "react-icons/fa";
+import profilePic from "../assets/setup.png";
 import {
   SiLaravel,
   SiMongodb,
@@ -15,27 +16,36 @@ export default function Aboutme() {
   return (
     <section id="about" className="about">
       <div className="about-container">
-        <h2>About Me</h2>
+        <h2 className="about-title">About Me</h2>
 
         <div className="about-content">
-          <p>
-            Hi! I'm Chaymae, a full-stack developer passionate about building
-            modern web applications. <br />
-            <br />
-            I mainly work with React, Node.js, Laravel, and databases like MySQL
-            and MongoDB. <br />
-            <br />
-            I enjoy building tools that automate workflows and simplify
-            development processes.
-          </p>
+          <div className="about-side">
+            <div className="about-image-wrap">
+              <img src={profilePic} alt="Chaymae Bellahcene workspace setup" className="about-image" />
+            </div>
 
-          <a
-            href="/CV-BELLAHCENE-Chaymae.pdf"
-            download
-            className="resume-button"
-          >
-            Download Resume
-          </a>
+            <a
+              href="/CV-BELLAHCENE-Chaymae.pdf"
+              download
+              className="resume-button"
+            >
+              Download Resume
+            </a>
+          </div>
+
+          <div className="about-text-wrap">
+            <h3 className="about-headline">
+              I'm Chaymae Bellahcene. I build reliable, modern web applications.
+            </h3>
+
+            <p className="about-paragraph">
+              I&apos;m a full-stack developer building modern web applications with React,
+              Node.js, Laravel, MySQL, and MongoDB, and I&apos;m currently growing toward
+              a DevOps path by focusing on Docker, CI/CD, automation, and cloud-ready
+              deployment practices.
+            </p>
+
+          </div>
         </div>
 
         <section id="skills" className="skills-section">

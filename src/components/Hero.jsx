@@ -7,10 +7,6 @@ export default function Hero() {
       <div className="hero-container">
 
         <div className="hero-text">
-          <div className="hero-badge">
-            {"< Full-Stack Developer />"}
-          </div>
-
           <h1 className="hero-title">
             <span className="hero-title-highlight"> CHAYMAE</span> <br/>
             BELLAHCENE
