@@ -3,7 +3,7 @@ import "./Hero.css";
 
 export default function Hero() {
   return (
-    <section className="hero-section">
+    <section id="home" className="hero-section">
       <div className="hero-container">
 
         <div className="hero-text">
@@ -13,8 +13,8 @@ export default function Hero() {
           </h1>
 
           <p className="hero-description">
-            Full-Stack Developer who enjoys building web applications with
-            React, Node.js and Laravel.
+            Chaymae Bellahcene is a Full-Stack Developer who enjoys building web
+            applications with React, Node.js and Laravel.
             <br />
             Currently learning DevOps practices and experimenting with Docker,
             Nginx and deployment automation.
@@ -36,7 +36,7 @@ export default function Hero() {
         </div>
 
         <div className="hero-image">
-          <img src={devIllustration} alt="Developer illustration" />
+          <img src={devIllustration} alt="Illustration for Chaymae Bellahcene portfolio" />
         </div>
 
       </div>
