@@ -5,7 +5,7 @@ export default function Experience() {
     {
       company: "Epic Digital",
       role: "Full stack developer",
-      period: "fev 2026 — Present",
+      period: "feb 2026 — Present",
       accent: "present",
       icon: "/LogoIcon.png", 
       description:

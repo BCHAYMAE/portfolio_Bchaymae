@@ -1,5 +1,6 @@
-import devIllustration from "../assets/pic.png";
 import "./Hero.css";
+import LanyardBadge from "./LanyardBadge";
+import chaymaePhoto from "../assets/bchaymae.png";
 
 export default function Hero() {
   return (
@@ -36,7 +37,18 @@ export default function Hero() {
         </div>
 
         <div className="hero-image">
-          <img src={devIllustration} alt="Illustration for Chaymae Bellahcene portfolio" />
+        
+          <LanyardBadge
+            name="Chaymae Bellahcene"
+            title="full stack developer"
+            tagline="slogan to add later"
+            avatarUrl={chaymaePhoto}
+            links={{
+              github: "https://github.com/ChaymaeBellahcene",
+              linkedin: "https://www.linkedin.com/in/chaymae-bellahcene/",
+              email: "mailto:bellahcene.chaymae@gmail.com",
+            }}
+          />
         </div>
 
       </div>

@@ -2,7 +2,6 @@
   position: relative;
   min-height: 60vh;
   padding: 5rem 1.5rem;
-  background: rgba(0, 0, 0, 0.2);
 }
 
 .about-container {
@@ -13,7 +12,7 @@
 .about-title {
   font-size: 2.25rem;
   font-weight: bold;
-  color: white;
+  color: var(--color-deep);
   font-family: monospace;
   margin: 0 0 1.5rem 0;
 }
@@ -50,7 +49,7 @@
 
 .about-headline {
   margin: 0;
-  color: #ffffff;
+  color: var(--color-deep);
   font-size: 2rem;
   line-height: 1.25;
   max-width: 44rem;
@@ -67,7 +66,7 @@
 .about-paragraph {
   margin: 0;
   font-size: 1.125rem;
-  color: #d1d5db;
+  color: var(--color-text-soft);
   line-height: 1.65;
   max-width: 50rem;
   font-family: "Poppins", sans-serif;
@@ -78,9 +77,9 @@
   max-width: 42rem;
   padding: 1rem 1.2rem;
   border-radius: 0.65rem;
-  border: 1px solid rgba(255, 255, 255, 0.14);
-  background: rgba(255, 255, 255, 0.06);
-  color: #f0f2f5;
+  border: 1px solid rgba(22, 66, 60, 0.08);
+  background: var(--color-panel);
+  color: var(--color-deep);
   font-family: monospace;
   font-size: 1.08rem;
 }
@@ -97,8 +96,8 @@
   width: 100%;
   border-radius: 14px;
   overflow: hidden;
-  border: 2px solid #aaff4a;
-  box-shadow: 0 16px 34px rgba(0, 0, 0, 0.42);
+  border: 1px solid rgba(22, 66, 60, 0.1);
+  box-shadow: var(--shadow-soft);
 }
 
 .about-image {
@@ -114,18 +113,18 @@
   justify-content: center;
   align-items: center;
   padding: 0.7rem 1rem;
-  color: #ffffff;
+  color: var(--color-ivory);
   text-decoration: none;
   font-family: "Poppins", sans-serif;
   border-radius: 14px;
   font-weight: 600;
-  border: 2px solid #aaff4a;
-  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid transparent;
+  background: var(--color-deep);
   transition: all 0.2s ease;
 }
 
 .resume-button:hover {
-  background: rgba(255, 255, 255, 0.16);
+  background: var(--color-sage);
   transform: translateY(-2px);
 }
 
@@ -151,22 +150,23 @@
 
 .skill-category {
   padding: 1.5rem;
-  border: 1px solid rgba(170, 255, 74, 0.2);
-  border-radius: 0.5rem;
-  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(22, 66, 60, 0.1);
+  border-radius: 1rem;
+  background: var(--color-panel-strong);
+  box-shadow: 0 14px 28px rgba(22, 66, 60, 0.08);
   transition: all 0.3s ease;
 }
 
 .skill-category:hover {
-  border-color: rgba(170, 255, 74, 0.5);
-  background: rgba(0, 0, 0, 0.5);
+  border-color: rgba(106, 156, 137, 0.5);
+  background: rgba(255, 255, 255, 0.82);
   transform: translateY(-4px);
 }
 
 .skill-category h4 {
   font-size: 1.125rem;
   font-weight: bold;
-  color: #aaff4a;
+  color: var(--color-sage);
   font-family: monospace;
   margin-bottom: 1rem;
 }
@@ -184,7 +184,7 @@
   display: flex;
   align-items: center;
   gap: 10px;
-  color: #d1d5db;
+  color: var(--color-text-soft);
   font-size: 0.9rem;
 }
 

@@ -1,4 +1,3 @@
-import Background from "./components/Background";
 import Hero from "./components/Hero";
 import Projects from "./components/Projects";
 import Aboutme from "./components/Aboutme";
@@ -9,7 +8,6 @@ import Experience from "./components/Experience";
 function App() {
   return (
   <>     
-   <Background />
     <Hero />
     <Experience />
     <Projects/>
