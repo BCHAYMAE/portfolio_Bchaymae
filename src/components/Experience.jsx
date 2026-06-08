@@ -4,7 +4,7 @@ export default function Experience() {
   const experiences = [
     {
       company: "Epic Digital",
-      role: "Full stack developer",
+      role: "Full-Stack Developer Intern",
       period: "feb 2026 — Present",
       accent: "present",
       icon: "/LogoIcon.png", 

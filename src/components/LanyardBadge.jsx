@@ -1,12 +1,13 @@
 import { useEffect, useMemo, useRef, useState } from "react";
-import { FaEnvelope, FaGithub, FaLinkedinIn } from "react-icons/fa";
+import { FaEnvelope, FaFileDownload, FaGithub, FaLinkedinIn } from "react-icons/fa";
 import badgeArt from "../assets/p-cutout-short.png";
 import styles from "./LanyardBadge.module.css";
 
 const DEFAULT_LINKS = {
-  github: "https://github.com/",
-  linkedin: "https://www.linkedin.com/",
+  github: "https://github.com/BCHAYMAE",
+  linkedin: "https://www.linkedin.com/in/chaymae-bellahcene-93a780336",
   email: "mailto:",
+  resume: "",
 };
 
 function getNameLines(name) {
@@ -162,6 +163,7 @@ export default function LanyardBadge({
     { key: "github", href: resolvedLinks.github, label: "GitHub", Icon: FaGithub },
     { key: "linkedin", href: resolvedLinks.linkedin, label: "LinkedIn", Icon: FaLinkedinIn },
     { key: "email", href: resolvedLinks.email, label: "Email", Icon: FaEnvelope },
+    { key: "resume", href: resolvedLinks.resume, label: "Resume", Icon: FaFileDownload, download: true },
   ];
 
   const stopDragPropagation = (event) => {
@@ -224,12 +226,13 @@ export default function LanyardBadge({
               <p className={styles.title}>{title}</p>
 
               <div className={styles.iconRow}>
-                {iconLinks.map(({ key, href, label, Icon }) => (
+                {iconLinks.filter(({ href }) => Boolean(href)).map(({ key, href, label, Icon, download }) => (
                   <a
                     key={key}
                     className={styles.iconLink}
                     href={href}
                     aria-label={label}
+                    download={download ? true : undefined}
                     target={href.startsWith("http") ? "_blank" : undefined}
                     rel={href.startsWith("http") ? "noreferrer" : undefined}
                     onPointerDown={stopDragPropagation}

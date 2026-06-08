@@ -55,17 +55,16 @@
   align-items: flex-start;
 }
 
-/* logo square */
 .exp-logo {
   width: 44px;
   height: 44px;
   border-radius: 10px;
   background: rgba(255, 255, 255, 0.65);
-  border: 1px solid rgba(22, 66, 60, 0.08);
+  border: 1px solid ;
   display: grid;
   place-items: center;
   flex-shrink: 0;
-  margin-left: 10px; /* pushes it a bit right from the line */
+  margin-left: 10px; 
 }
 
 .exp-logo img {
@@ -102,7 +101,7 @@
 }
 
 .exp-period.is-present {
-  color: var(--color-sage);
+  color: #6A9C89;
 }
 
 .exp-desc {

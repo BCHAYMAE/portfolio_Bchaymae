@@ -4,12 +4,10 @@ export default function Projects() {
   const projects = [
     {
       title: "GitRepo AutoDeploy App",
-      description: `A full-stack deployment tool that automatically clones GitHub repositories
-and generates Dockerfiles.
-
-â€¢ Detects project type automatically
-â€¢ Generates Docker configuration
-â€¢ Deploys with Nginx reverse proxy`,
+      description: `A full-stack deployment tool that automatically clones GitHub repositories and generates Dockerfiles.
+- Automatically detects project type
+- Generates Docker configuration
+- Deploys using Nginx reverse proxy`,
       tags: [
         "Node.js",
         "Express.js",
@@ -43,7 +41,7 @@ and generates Dockerfiles.
       <div className="projects-container">
         <header className="projects-header">
           <h2>Featured Projects</h2>
-          <p>Selected work â€” source code available on GitHub.</p>
+          <p>Selected work, source code available on GitHub.</p>
         </header>
 
         <div className="projects-grid">
@@ -68,7 +66,7 @@ and generates Dockerfiles.
                       rel="noopener noreferrer"
                       aria-label={`Open ${project.title} on GitHub`}
                     >
-                      GitHub â†—
+                      GitHub 
                     </a>
 
                     {project.demo && (
@@ -78,7 +76,7 @@ and generates Dockerfiles.
                         target="_blank"
                         rel="noopener noreferrer"
                       >
-                        Live Demo â†—
+                        Live Demo 
                       </a>
                     )}
                   </div>

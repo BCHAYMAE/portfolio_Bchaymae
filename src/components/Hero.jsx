@@ -47,6 +47,7 @@ export default function Hero() {
               github: "https://github.com/ChaymaeBellahcene",
               linkedin: "https://www.linkedin.com/in/chaymae-bellahcene/",
               email: "mailto:bellahcene.chaymae@gmail.com",
+              resume: "/CV-BELLAHCENE Chaymae.pdf",
             }}
           />
         </div>
