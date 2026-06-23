@@ -85,8 +85,10 @@ export default function Aboutme() {
             <div className="skill-category">
               <h4>Soft Skills</h4>
               <ul>
-                <li>Agile development & teamwork</li>
-                <li>Quick learner & self-motivated</li>
+                <li>Agile development</li>
+                <li>Teamwork</li>
+                <li>Quick learner</li>
+                <li>self-motivated</li>
               </ul>
             </div>
           </div>

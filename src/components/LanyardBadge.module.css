@@ -1,169 +1,507 @@
 .stage {
-  width: 260px;
-  min-height: 470px;
+  width: min(100%, 372px);
+  min-height: 610px;
   display: flex;
   align-items: flex-start;
   justify-content: center;
-  padding-top: 0;
   user-select: none;
 }
 
 .entry {
-  animation: badgeEnter 820ms cubic-bezier(0.2, 0.85, 0.2, 1) both;
+  animation: badgeEnter 850ms cubic-bezier(0.2, 0.85, 0.2, 1) both;
 }
 
 .assembly {
-  width: 248px;
+  width: 352px;
   display: flex;
+  flex-direction: column;
+  align-items: center;
   transform-origin: 50% 0;
-  transform: translateY(calc(var(--badge-lift, 0px) * -1)) rotate(var(--badge-rotate, 0deg))
+  transform:
+    translateY(calc(var(--badge-lift, 0px) * -1))
+    rotate(var(--badge-rotate, 0deg))
     scale(var(--badge-scale, 1));
   cursor: grab;
-  transition: filter 180ms ease;
   touch-action: none;
   will-change: transform;
+  transition: filter 180ms ease;
 }
 
 .dragging {
   cursor: grabbing;
-  filter: saturate(1.03);
+  filter: saturate(1.05);
 }
 
-.artWrap {
+.strap {
+  width: 232px;
+  height: 198px;
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+
+
+.strapBandLeft {
+  left: calc(50% - 66px);
+  transform: rotate(23deg);
+}
+
+.strapBandRight {
+  right: calc(50% - 66px);
+  transform: rotate(-23deg);
+}
+
+.ring {
+  position: absolute;
+  left: 50%;
+  bottom: 40px;
+  width: 56px;
+  height: 22px;
+  transform: translateX(-50%);
+  border-radius: 999px;
+  border: 3px solid #d7d7d7;
+  background: linear-gradient(180deg, #eeeeee 0%, #c6c6c6 100%);
+  box-shadow:
+    0 4px 8px rgba(15, 23, 42, 0.18),
+    inset 0 1px 0 rgba(255, 255, 255, 0.95);
+}
+
+.ring::before {
+  content: "";
+  position: absolute;
+  inset: 2px 7px;
+  border-radius: inherit;
+  border: 2px solid rgba(255, 255, 255, 0.4);
+}
+
+.connector {
+  position: absolute;
+  left: 50%;
+  bottom: 26px;
+  width: 20px;
+  height: 20px;
+  transform: translateX(-50%);
+  border-radius: 10px 10px 7px 7px;
+  background: linear-gradient(180deg, #f3f3f3 0%, #cbcbcb 100%);
+  box-shadow:
+    0 3px 5px rgba(15, 23, 42, 0.12),
+    inset 0 1px 0 rgba(255, 255, 255, 0.95);
+}
+
+.clip {
+  position: absolute;
+  left: 50%;
+  bottom: -3px;
+  width: 32px;
+  height: 60px;
+  transform: translateX(-50%);
+  border-radius: 18px;
+  background: linear-gradient(180deg, #f1f1f1 0%, #d4d4d4 52%, #bfbfbf 100%);
+  box-shadow:
+    0 6px 10px rgba(15, 23, 42, 0.18),
+    inset 0 1px 0 rgba(255, 255, 255, 0.95);
+}
+
+.clip::before {
+  content: "";
+  position: absolute;
+  top: 8px;
+  left: 7px;
+  right: 7px;
+  height: 31px;
+  border-radius: 18px;
+  border: 4px solid rgba(255, 255, 255, 0.82);
+  border-right-color: rgba(182, 182, 182, 0.68);
+  border-bottom-color: rgba(150, 150, 150, 0.82);
+  transform: rotate(8deg);
+}
+
+.clip::after {
+  content: "";
+  position: absolute;
+  top: 17px;
+  left: 11px;
+  width: 10px;
+  height: 18px;
+  border-radius: 10px;
+  background: linear-gradient(180deg, #f8f8f8 0%, #d2d2d2 100%);
+}
+
+.badge {
   width: 100%;
   position: relative;
+  border-radius: 13px;
+  padding: 15px 15px 16px;
+  background: linear-gradient(180deg, #d9dadf 0%, #cfd1d8 100%);
+  border: 1px solid rgba(255, 255, 255, 0.82);
+  box-shadow:
+    var(--badge-shadow-x, 0px)
+    22px
+    var(--badge-shadow-blur, 24px)
+    rgba(31, 41, 55, 0.2),
+    inset 0 3px 4px rgba(255, 255, 255, 0.48),
+    inset 0 -3px 5px rgba(15, 23, 42, 0.06);
 }
 
-.badgeArt {
-  width: 100%;
-  height: auto;
-  display: block;
+.badge::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  box-shadow: inset 0 0 0 1px rgba(244, 245, 247, 0.6);
   pointer-events: none;
-  filter: drop-shadow(var(--holder-shadow-x, 0px) 18px var(--holder-shadow-blur, 18px) rgba(15, 23, 42, 0.18));
+}
+
+.badgeTop {
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 102px;
+  margin-bottom: 13px;
+}
+
+.slot {
+  width: 38px;
+  height: 8px;
+  border-radius: 999px;
+  background: linear-gradient(180deg, #93969c 0%, #74777c 100%);
+  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.36);
+}
+
+.badgeBody {
+  min-height: 230px;
+  position: relative;
+  overflow: hidden;
+  border-radius: 14px 14px 8px 8px;
+  background: linear-gradient(180deg, #ffffff 0%, #fafafa 100%);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.96),
+    inset 0 0 0 1px rgba(224, 227, 232, 0.9);
+}
+
+.badgeBody::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 12px;
+  background: linear-gradient(180deg, rgba(214, 217, 223, 0.55), transparent);
 }
 
 .cardContent {
-  width: 68%;
-  height: 39%;
-  position: absolute;
-  left: 50%;
-  top: 54%;
-  transform: translateX(-50%);
-  display: grid;
-  grid-template-rows: auto auto auto auto auto;
-  justify-items: center;
-  align-content: space-between;
-  row-gap: 0.35rem;
-  text-align: center;
-  padding: 0.1rem 0.1rem 0.15rem;
+  min-height: 230px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  justify-content: flex-start;
+  padding: 24px 22px 20px;
+  pointer-events: none;
+  position: relative;
+  z-index: 1;
+}
+
+.identityRow {
+  display: flex;
+  align-items: center;
+  gap: 15px;
 }
 
 .avatarWrap {
-  width: 150px;
-  height: 180px;
+  width: 84px;
+  height: 102px;
+  border-radius: 16px;
+  overflow: hidden;
+  flex-shrink: 0;
+  background: linear-gradient(135deg, #eef1f5 0%, #e2e8f0 100%);
+  border: 1px solid #d8dde6;
+  box-shadow: 0 10px 16px rgba(15, 23, 42, 0.08);
 }
 
 .avatarImage,
 .placeholderAvatar {
   width: 100%;
   height: 100%;
-  border-radius: 10px;
   display: block;
+  border-radius: 15px;
 }
 
 .avatarImage {
-  object-fit: contain;
-  object-position: center center;
+  object-fit: cover;
+  object-position: center top;
 }
 
+.placeholderAvatar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #eceff4 0%, #dbe3ec 100%);
+  color: #394858;
+  font-size: 1.75rem;
+  font-weight: 700;
+  font-family: "Poppins", sans-serif;
+}
 
-.nameBlock {
-  margin-top: 0;
+.textBlock {
+  min-width: 0;
+  flex: 1;
   display: flex;
   flex-direction: column;
-  gap: 0;
+  gap: 8px;
+}
+
+.nameBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
 }
 
 .nameLine {
-  font-size: 0.88rem;
-  line-height: 1.08;
-  font-weight: 700;
-  color: #24313d;
-  letter-spacing: 0.01em;
+  font-size: 1.06rem;
+  line-height: 1.02;
+  font-weight: 800;
+  color: #222831;
+  letter-spacing: -0.03em;
+  font-family: "Poppins", sans-serif;
 }
 
 .title {
   margin: 0;
-  font-size: 0.6rem;
-  line-height: 1.3;
-  color: #6a7683;
-  text-transform: lowercase;
-  letter-spacing: 0.06em;
+  color: #697584;
+  font-size: 0.66rem;
+  line-height: 1.2;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  font-family: "Poppins", sans-serif;
 }
 
 .iconRow {
-  margin-top: 0;
+  margin-top: auto;
   display: flex;
   align-items: center;
-  justify-content: center;
-  gap: 8px;
+  justify-content: flex-start;
+  gap: 10px;
+  pointer-events: auto;
 }
 
 .iconLink {
-  width: 28px;
-  height: 28px;
-  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  border-radius: 999px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  border: 1px solid #d3dbe4;
-  background: rgba(248, 250, 251, 0.98);
-  color: #334155;
-  font-size: 0.74rem;
+  border: 1px solid #d7dde6;
+  background: linear-gradient(180deg, #ffffff 0%, #eef2f6 100%);
+  color: #2c3948;
+  font-size: 0.94rem;
   text-decoration: none;
+  box-shadow: 0 10px 16px rgba(15, 23, 42, 0.08);
   transition:
     transform 180ms ease,
     box-shadow 180ms ease,
-    border-color 180ms ease;
+    border-color 180ms ease,
+    background 180ms ease,
+    color 180ms ease;
 }
 
 .iconLink:hover {
-  transform: translateY(-1px);
-  border-color: #c8d0d8;
-  box-shadow: 0 8px 14px rgba(15, 23, 42, 0.1);
+  transform: translateY(-2px);
+  border-color: rgba(88, 102, 120, 0.42);
+  background: #ffffff;
+  color: #1f2937;
+  box-shadow: 0 12px 18px rgba(15, 23, 42, 0.12);
 }
 
 .iconLink:focus-visible {
-  outline: 2px solid #94a3b8;
-  outline-offset: 2px;
+  outline: 2px solid rgba(88, 102, 120, 0.7);
+  outline-offset: 3px;
 }
 
 .tagline {
   margin: 0;
-  font-size: 0.58rem;
-  line-height: 1.25;
-  color: #6b7280;
+  color: #495567;
+  font-size: 0.79rem;
+  line-height: 1.45;
+  font-weight: 500;
+  font-family: "Poppins", sans-serif;
 }
 
 @keyframes badgeEnter {
   0% {
     opacity: 0;
-    transform: translateY(-18px) scale(0.96);
+    transform: translateY(-20px) scale(0.96) rotate(-2deg);
   }
 
   100% {
     opacity: 1;
-    transform: translateY(0) scale(1);
+    transform: translateY(0) scale(1) rotate(0deg);
   }
 }
 
 @media (max-width: 768px) {
   .stage {
-    width: 100%;
-    min-height: 440px;
+    width: min(100%, 330px);
+    min-height: 548px;
   }
 
+  .assembly {
+    width: 312px;
+  }
+
+  .strap {
+    width: 206px;
+    height: 176px;
+  }
+
+  .strapBandLeft,
+  .strapBandRight {
+    top: -48px;
+    width: 35px;
+    height: 156px;
+  }
+
+  .strapBandLeft {
+    left: calc(50% - 58px);
+  }
+
+  .strapBandRight {
+    right: calc(50% - 58px);
+  }
+
+  .badgeTop {
+    gap: 88px;
+  }
+
+  .badgeBody,
+  .cardContent {
+    min-height: 206px;
+  }
+
+  .cardContent {
+    padding: 20px 18px 16px;
+  }
+
+  .avatarWrap {
+    width: 74px;
+    height: 90px;
+  }
+
+  .nameLine {
+    font-size: 0.96rem;
+  }
+
+  .title {
+    font-size: 0.62rem;
+  }
+
+  .iconLink {
+    width: 34px;
+    height: 34px;
+    font-size: 0.88rem;
+  }
+
+  .tagline {
+    font-size: 0.74rem;
+  }
+}
+
+@media (max-width: 420px) {
+  .stage {
+    width: min(100%, 300px);
+    min-height: 512px;
+  }
+
+  .assembly {
+    width: 282px;
+  }
+
+  .strap {
+    width: 184px;
+    height: 162px;
+  }
+
+  .strapBandLeft,
+  .strapBandRight {
+    top: -44px;
+    width: 31px;
+    height: 142px;
+  }
+
+  .strapBandLeft {
+    left: calc(50% - 52px);
+  }
+
+  .strapBandRight {
+    right: calc(50% - 52px);
+  }
+
+  .badge {
+    padding: 13px 13px 14px;
+  }
+
+  .badgeTop {
+    gap: 76px;
+    margin-bottom: 10px;
+  }
+
+  .slot {
+    width: 32px;
+  }
+
+  .badgeBody,
+  .cardContent {
+    min-height: 190px;
+  }
+
+  .cardContent {
+    padding: 18px 15px 14px;
+    gap: 12px;
+  }
+
+  .identityRow {
+    gap: 12px;
+  }
+
+  .avatarWrap {
+    width: 64px;
+    height: 80px;
+  }
+
+  .nameLine {
+    font-size: 0.88rem;
+  }
+
+  .title {
+    font-size: 0.58rem;
+  }
+
+  .iconRow {
+    gap: 8px;
+  }
+
+  .iconLink {
+    width: 31px;
+    height: 31px;
+    font-size: 0.82rem;
+  }
+
+  .tagline {
+    font-size: 0.7rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
   .entry {
-    animation-duration: 680ms;
+    animation: none;
+  }
+
+  .assembly,
+  .iconLink {
+    transition: none;
   }
 }

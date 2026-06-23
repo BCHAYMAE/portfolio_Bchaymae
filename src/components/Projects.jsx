@@ -34,6 +34,37 @@ export default function Projects() {
       repo: "https://github.com/BCHAYMAE/ai_learning",
       demo: "https://ai-adventures.netlify.app/",
     },
+    {
+      title: "Epic digital Website",
+      description: "It's a browser-based educational game inspired by classic maze games like Pac-Man, where players explore artificial intelligence concepts through interactive challenges. Children collect data, avoid enemies, and complete sorting tasks that introduce ideas such as supervised, unsupervised, and reinforcement learning. Designed with colorful visuals and simple controls, the game transforms complex AI concepts into fun, hands-on learning experiences",
+      tags: [
+        "Next.js",
+        "TypeScript",
+        "Tailwind CSS",
+        "Nodemailer",
+        "GSAP",
+        "ScrollTrigger",
+        "GSAP + ScrollTrigger",
+        "i18next",
+        "SEO features",
+      ],
+      image: "/epic.PNG",
+      repo: null,
+      demo: "https://epicdigital.ma/",
+    },
+     {
+      title: "Synthesis Project OFPPT",
+      description: `This application covers two main needs:
+      - Administrative management of reference data such as provinces, communes, domaines, chantiers, and programmes.
+      - Operational monitoring of projects and sousprojets, including progress, localization, beneficiaries, financing, and comments.`,
+      tags: [
+        "Laravel",
+      ],
+      image: "/laravel.PNG",
+      repo: "https://github.com/drawliin/Synthesis-Project-OFPPT",
+      demo: null,
+    },
+    
   ];
 
   return (

@@ -1,16 +1,21 @@
 import { useEffect, useMemo, useRef, useState } from "react";
-import { FaEnvelope, FaFileDownload, FaGithub, FaLinkedinIn } from "react-icons/fa";
-import badgeArt from "../assets/p-cutout-short.png";
+import {
+  FaEnvelope,
+  FaFileDownload,
+  FaGithub,
+  FaLinkedinIn,
+} from "react-icons/fa";
+
 import styles from "./LanyardBadge.module.css";
 
 const DEFAULT_LINKS = {
-  github: "https://github.com/BCHAYMAE",
-  linkedin: "https://www.linkedin.com/in/chaymae-bellahcene-93a780336",
-  email: "mailto:",
-  resume: "",
+  github: "https://github.com/ChaymaeBellahcene",
+  linkedin: "https://www.linkedin.com/in/chaymae-bellahcene/",
+  email: "mailto:bellahcene.chaymae@gmail.com",
+  resume: "/CV-BELLAHCENE%20Chaymae.pdf",
 };
 
-function getNameLines(name) {
+function getNameLines(name = "") {
   const trimmedName = name.trim();
 
   if (!trimmedName) {
@@ -34,10 +39,14 @@ function getNameLines(name) {
   return [parts[0], parts.slice(1).join(" ")];
 }
 
+function isExternalLink(href) {
+  return href.startsWith("http://") || href.startsWith("https://");
+}
+
 export default function LanyardBadge({
   name = "Chaymae Bellahcene",
-  title = "full stack developer",
-  tagline = "slogan to add later",
+  title = "Full-Stack Developer",
+  tagline = "Building web apps from idea to deployment",
   avatarUrl = "",
   links = DEFAULT_LINKS,
 }) {
@@ -48,6 +57,7 @@ export default function LanyardBadge({
   const frameRef = useRef(null);
   const angleRef = useRef(0);
   const velocityRef = useRef(0);
+
   const dragRef = useRef({
     active: false,
     pointerId: null,
@@ -58,6 +68,54 @@ export default function LanyardBadge({
   });
 
   const nameLines = useMemo(() => getNameLines(name), [name]);
+  const initials = useMemo(
+    () =>
+      nameLines
+        .map((line) => line.charAt(0))
+        .join("")
+        .slice(0, 2)
+        .toUpperCase(),
+    [nameLines]
+  );
+
+  const resolvedLinks = useMemo(
+    () => ({
+      ...DEFAULT_LINKS,
+      ...links,
+    }),
+    [links]
+  );
+
+  const iconLinks = useMemo(
+    () => [
+      {
+        key: "github",
+        href: resolvedLinks.github,
+        label: "GitHub profile",
+        Icon: FaGithub,
+      },
+      {
+        key: "linkedin",
+        href: resolvedLinks.linkedin,
+        label: "LinkedIn profile",
+        Icon: FaLinkedinIn,
+      },
+      {
+        key: "email",
+        href: resolvedLinks.email,
+        label: "Send email",
+        Icon: FaEnvelope,
+      },
+      {
+        key: "resume",
+        href: resolvedLinks.resume,
+        label: "Download resume",
+        Icon: FaFileDownload,
+        download: true,
+      },
+    ],
+    [resolvedLinks]
+  );
 
   useEffect(() => {
     return () => {
@@ -74,6 +132,11 @@ export default function LanyardBadge({
     }
   };
 
+  const setBadgeRotation = (nextRotation) => {
+    angleRef.current = nextRotation;
+    setRotation(nextRotation);
+  };
+
   const animateBackToCenter = () => {
     stopAnimation();
 
@@ -87,7 +150,10 @@ export default function LanyardBadge({
       velocityRef.current *= Math.pow(0.912, delta);
       angleRef.current += velocityRef.current * delta;
 
-      if (Math.abs(angleRef.current) < 0.025 && Math.abs(velocityRef.current) < 0.018) {
+      if (
+        Math.abs(angleRef.current) < 0.025 &&
+        Math.abs(velocityRef.current) < 0.018
+      ) {
         angleRef.current = 0;
         velocityRef.current = 0;
         setRotation(0);
@@ -103,7 +169,7 @@ export default function LanyardBadge({
   };
 
   const handlePointerDown = (event) => {
-    if (event.button !== 0) {
+    if (event.pointerType === "mouse" && event.button !== 0) {
       return;
     }
 
@@ -123,127 +189,160 @@ export default function LanyardBadge({
   };
 
   const handlePointerMove = (event) => {
-    if (!dragRef.current.active || dragRef.current.pointerId !== event.pointerId) {
+    if (
+      !dragRef.current.active ||
+      dragRef.current.pointerId !== event.pointerId
+    ) {
       return;
     }
 
+    const distance = event.clientX - dragRef.current.startX;
     const nextAngle = Math.max(
-      -16,
-      Math.min(16, dragRef.current.startAngle + (event.clientX - dragRef.current.startX) * 0.14)
+      -15,
+      Math.min(15, dragRef.current.startAngle + distance * 0.12)
     );
+
     const now = performance.now();
     const deltaX = event.clientX - dragRef.current.lastX;
     const deltaTime = Math.max(now - dragRef.current.lastTime, 1);
 
-    angleRef.current = nextAngle;
-    velocityRef.current = Math.max(-2.1, Math.min(2.1, (deltaX / deltaTime) * 1.15));
+    velocityRef.current = Math.max(
+      -2,
+      Math.min(2, (deltaX / deltaTime) * 1.1)
+    );
+
     dragRef.current.lastX = event.clientX;
     dragRef.current.lastTime = now;
-    setRotation(nextAngle);
+
+    setBadgeRotation(nextAngle);
   };
 
   const releaseDrag = (event) => {
-    if (!dragRef.current.active || dragRef.current.pointerId !== event.pointerId) {
+    if (
+      !dragRef.current.active ||
+      dragRef.current.pointerId !== event.pointerId
+    ) {
       return;
     }
 
     dragRef.current.active = false;
     dragRef.current.pointerId = null;
-    badgeRef.current?.releasePointerCapture(event.pointerId);
+
+    if (badgeRef.current?.hasPointerCapture?.(event.pointerId)) {
+      badgeRef.current.releasePointerCapture(event.pointerId);
+    }
+
     setIsDragging(false);
     animateBackToCenter();
   };
-
-  const resolvedLinks = {
-    ...DEFAULT_LINKS,
-    ...links,
-  };
-
-  const iconLinks = [
-    { key: "github", href: resolvedLinks.github, label: "GitHub", Icon: FaGithub },
-    { key: "linkedin", href: resolvedLinks.linkedin, label: "LinkedIn", Icon: FaLinkedinIn },
-    { key: "email", href: resolvedLinks.email, label: "Email", Icon: FaEnvelope },
-    { key: "resume", href: resolvedLinks.resume, label: "Resume", Icon: FaFileDownload, download: true },
-  ];
 
   const stopDragPropagation = (event) => {
     event.stopPropagation();
   };
 
   const tiltAbs = Math.abs(rotation);
-  const swingScale = 1 + tiltAbs * 0.002;
-  const swingLift = tiltAbs * 0.32;
-  const shadowOffset = rotation * -0.85;
-  const shadowBlur = 18 + tiltAbs * 0.55;
+  const swingScale = 1 + tiltAbs * 0.0016;
+  const swingLift = tiltAbs * 0.24;
+  const shadowOffset = rotation * -0.9;
+  const shadowBlur = 24 + tiltAbs * 0.55;
 
   return (
     <div className={styles.stage}>
       <div className={styles.entry}>
         <div
           ref={badgeRef}
-          className={`${styles.assembly} ${isDragging ? styles.dragging : ""}`}
+          className={`${styles.assembly} ${
+            isDragging ? styles.dragging : ""
+          }`}
           style={{
             "--badge-rotate": `${rotation}deg`,
             "--badge-scale": swingScale.toFixed(3),
             "--badge-lift": `${swingLift.toFixed(2)}px`,
-            "--holder-shadow-x": `${shadowOffset.toFixed(2)}px`,
-            "--holder-shadow-blur": `${shadowBlur.toFixed(2)}px`,
+            "--badge-shadow-x": `${shadowOffset.toFixed(2)}px`,
+            "--badge-shadow-blur": `${shadowBlur.toFixed(2)}px`,
           }}
           onPointerDown={handlePointerDown}
           onPointerMove={handlePointerMove}
           onPointerUp={releaseDrag}
           onPointerCancel={releaseDrag}
           onLostPointerCapture={releaseDrag}
-          role="presentation"
+          aria-label={`${name} profile badge`}
         >
-          
-          <div className={styles.artWrap}>
-            
-            <img className={styles.badgeArt} src={badgeArt} alt="" draggable="false" />
+          <div className={styles.strap} aria-hidden="true">
+            <span className={styles.strapBandLeft}></span>
+            <span className={styles.strapBandRight}></span>
+            <span className={styles.ring}></span>
+            <span className={styles.connector}></span>
+            <span className={styles.clip}></span>
+          </div>
 
-            <div className={styles.cardContent}>
-              <div className={styles.avatarWrap}>
-                {avatarUrl ? (
-                  <img
-                    className={styles.avatarImage}
-                    src={avatarUrl}
-                    alt={`${name} avatar`}
-                    draggable="false"
-                  />
-                ) : (
-                  <div className={styles.placeholderAvatar} aria-hidden="true" />
-                )}
+          <div className={styles.badge}>
+            <div className={styles.badgeTop} aria-hidden="true">
+              <span className={styles.slot}></span>
+              <span className={styles.slot}></span>
+            </div>
+
+            <div className={styles.badgeBody}>
+              <div className={styles.cardContent}>
+                <div className={styles.identityRow}>
+                  <div className={styles.avatarWrap}>
+                    {avatarUrl ? (
+                      <img
+                        className={styles.avatarImage}
+                        src={avatarUrl}
+                        alt={name}
+                        draggable="false"
+                      />
+                    ) : (
+                      <div
+                        className={styles.placeholderAvatar}
+                        aria-hidden="true"
+                      >
+                        {initials}
+                      </div>
+                    )}
+                  </div>
+
+                  <div className={styles.textBlock}>
+                    <div className={styles.nameBlock}>
+                      {nameLines.map((line, index) => (
+                        <span
+                          key={`${line}-${index}`}
+                          className={styles.nameLine}
+                        >
+                          {line}
+                        </span>
+                      ))}
+                    </div>
+
+                    <p className={styles.title}>{title}</p>
+                  </div>
+                </div>
+
+                <p className={styles.tagline}>{tagline}</p>
+
+                <div className={styles.iconRow}>
+                  {iconLinks
+                    .filter(({ href }) => Boolean(href))
+                    .map(({ key, href, label, Icon, download }) => (
+                      <a
+                        key={key}
+                        className={styles.iconLink}
+                        href={href}
+                        aria-label={label}
+                        title={label}
+                        download={download ? true : undefined}
+                        target={isExternalLink(href) ? "_blank" : undefined}
+                        rel={isExternalLink(href) ? "noreferrer" : undefined}
+                        onPointerDown={stopDragPropagation}
+                        onPointerMove={stopDragPropagation}
+                        onClick={stopDragPropagation}
+                      >
+                        <Icon />
+                      </a>
+                    ))}
+                </div>
               </div>
-
-              <div className={styles.nameBlock}>
-                {nameLines.map((line) => (
-                  <span key={line} className={styles.nameLine}>
-                    {line}
-                  </span>
-                ))}
-              </div>
-
-              <p className={styles.title}>{title}</p>
-
-              <div className={styles.iconRow}>
-                {iconLinks.filter(({ href }) => Boolean(href)).map(({ key, href, label, Icon, download }) => (
-                  <a
-                    key={key}
-                    className={styles.iconLink}
-                    href={href}
-                    aria-label={label}
-                    download={download ? true : undefined}
-                    target={href.startsWith("http") ? "_blank" : undefined}
-                    rel={href.startsWith("http") ? "noreferrer" : undefined}
-                    onPointerDown={stopDragPropagation}
-                    onClick={stopDragPropagation}
-                  >
-                    <Icon />
-                  </a>
-                  
-                ))}
-              </div>
-              <p className={styles.tagline}>{tagline}</p>
             </div>
           </div>
         </div>
