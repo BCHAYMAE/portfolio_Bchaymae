@@ -80,6 +80,19 @@ export default function Projects() {
       repo: null,
       demo: "https://portfolio.epicdigital.ma/",
     },
+    {
+      title: "Sudoku",
+      description: `A small Go Sudoku project with:
+          - a backtracking solver
+          - a simple browser interface rendered by Go
+          - the command-line solver mode`,
+      tags: [
+        "go",
+      ],
+      image: "/soduko.PNG",
+      repo: "https://github.com/BCHAYMAE/sudoku",
+      demo: null,
+    },
     
   ];
 
