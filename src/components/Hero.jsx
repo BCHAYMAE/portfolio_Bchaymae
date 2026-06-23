@@ -5,9 +5,6 @@ import chaymaePhoto from "../assets/bchaymae.png";
 export default function Hero() {
   return (
     <section id="home" className="hero-section">
-      <div className="hero-bg hero-bg-one"></div>
-      <div className="hero-bg hero-bg-two"></div>
-
       <div className="hero-container">
         <div className="hero-text">
           <span className="hero-eyebrow">Full-Stack Developer</span>

@@ -36,7 +36,7 @@ export default function Projects() {
     },
     {
       title: "Epic digital Website",
-      description: "It's a browser-based educational game inspired by classic maze games like Pac-Man, where players explore artificial intelligence concepts through interactive challenges. Children collect data, avoid enemies, and complete sorting tasks that introduce ideas such as supervised, unsupervised, and reinforcement learning. Designed with colorful visuals and simple controls, the game transforms complex AI concepts into fun, hands-on learning experiences",
+      description: "Designed and developed the official website for Epic Digital, a digital marketing agency. The platform showcases the agency’s services, projects, and company information through a modern, responsive, and user-friendly interface, helping strengthen its online presence and improve client engagement.",
       tags: [
         "Next.js",
         "TypeScript",
@@ -44,7 +44,6 @@ export default function Projects() {
         "Nodemailer",
         "GSAP",
         "ScrollTrigger",
-        "GSAP + ScrollTrigger",
         "i18next",
         "SEO features",
       ],
@@ -63,6 +62,23 @@ export default function Projects() {
       image: "/laravel.PNG",
       repo: "https://github.com/drawliin/Synthesis-Project-OFPPT",
       demo: null,
+    },
+    {
+      title: "Epic Digital Portfolio",
+      description: "Designed and developed a portfolio website for Epic Digital to showcase the agency’s projects, achievements, and expertise. The platform features a modern, responsive design that highlights completed work and provides visitors with an engaging overview of the agency’s capabilities.",
+      tags: [
+        "Next.js",
+        "TypeScript",
+        "Tailwind CSS",
+        "Three.js",
+        "Framer Motion",
+        "Nodemailer",
+        "React Three Fiber",
+        "SEO features",
+      ],
+      image: "/port.PNG",
+      repo: null,
+      demo: "https://portfolio.epicdigital.ma/",
     },
     
   ];
