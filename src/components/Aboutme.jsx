@@ -25,7 +25,7 @@ export default function Aboutme() {
             </div>
 
             <a
-              href="/CV-BELLAHCENE Chaymae.pdf"
+              href="/CV-BELLAHCENE-Chaymae.pdf"
               download
               className="resume-button"
             >

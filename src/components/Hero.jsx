@@ -32,7 +32,7 @@ export default function Hero() {
             </a>
 
             <a
-              href="/CV-BELLAHCENE Chaymae.pdf"
+              href="/CV-BELLAHCENE-Chaymae.pdf"
               className="hero-btn secondary-btn"
               target="_blank"
               rel="noreferrer"
@@ -49,10 +49,10 @@ export default function Hero() {
             tagline="Building web apps from idea to deployment"
             avatarUrl={chaymaePhoto}
             links={{
-              github: "https://github.com/ChaymaeBellahcene",
-              linkedin: "https://www.linkedin.com/in/chaymae-bellahcene/",
+              github: "https://github.com/BCHAYMAE",
+              linkedin: "https://www.linkedin.com/in/chaymae-bellahcene-93a780336/",
               email: "mailto:bellahcene.chaymae@gmail.com",
-              resume: "/CV-BELLAHCENE Chaymae.pdf",
+              resume: "/CV-BELLAHCENE-Chaymae.pdf",
             }}
           />
         </div>

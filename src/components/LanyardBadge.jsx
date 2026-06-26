@@ -9,10 +9,10 @@ import {
 import styles from "./LanyardBadge.module.css";
 
 const DEFAULT_LINKS = {
-  github: "https://github.com/ChaymaeBellahcene",
-  linkedin: "https://www.linkedin.com/in/chaymae-bellahcene/",
+  github: "https://github.com/BCHAYMAE",
+  linkedin: "https://www.linkedin.com/in/chaymae-bellahcene-93a780336",
   email: "mailto:bellahcene.chaymae@gmail.com",
-  resume: "/CV-BELLAHCENE%20Chaymae.pdf",
+  resume: "/CV-BELLAHCENE-Chaymae.pdf",
 };
 
 function getNameLines(name = "") {
@@ -86,36 +86,33 @@ export default function LanyardBadge({
     [links]
   );
 
-  const iconLinks = useMemo(
-    () => [
-      {
-        key: "github",
-        href: resolvedLinks.github,
-        label: "GitHub profile",
-        Icon: FaGithub,
-      },
-      {
-        key: "linkedin",
-        href: resolvedLinks.linkedin,
-        label: "LinkedIn profile",
-        Icon: FaLinkedinIn,
-      },
-      {
-        key: "email",
-        href: resolvedLinks.email,
-        label: "Send email",
-        Icon: FaEnvelope,
-      },
-      {
-        key: "resume",
-        href: resolvedLinks.resume,
-        label: "Download resume",
-        Icon: FaFileDownload,
-        download: true,
-      },
-    ],
-    [resolvedLinks]
-  );
+  const iconLinks = [
+  {
+    key: "github",
+    href: resolvedLinks.github,
+    label: "GitHub profile",
+    Icon: FaGithub,
+  },
+  {
+    key: "linkedin",
+    href: resolvedLinks.linkedin,
+    label: "LinkedIn profile",
+    Icon: FaLinkedinIn,
+  },
+  {
+    key: "email",
+    href: resolvedLinks.email,
+    label: "Send email",
+    Icon: FaEnvelope,
+  },
+  {
+    key: "resume",
+    href: resolvedLinks.resume,
+    label: "Download resume",
+    Icon: FaFileDownload,
+    download: true,
+  },
+];
 
   useEffect(() => {
     return () => {
@@ -170,6 +167,10 @@ export default function LanyardBadge({
 
   const handlePointerDown = (event) => {
     if (event.pointerType === "mouse" && event.button !== 0) {
+      return;
+    }
+
+    if (event.target.closest("a, button")) {
       return;
     }
 
